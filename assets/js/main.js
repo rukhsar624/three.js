@@ -60,7 +60,7 @@ let scene, camera, renderer;
 let rotateAroundGroup = true;
 
 scene = new THREE.Scene();
-scene.background = new THREE.Color("#2f2f2f");
+scene.background = new THREE.Color("#000e41");
 
 // const axesHelper = new THREE.AxesHelper(3);
 // scene.add(axesHelper);
@@ -82,6 +82,8 @@ const group = new THREE.Group();
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshPhongMaterial();
 
+const material1 = new THREE.MeshPhongMaterial({ map: new THREE.TextureLoader().load('path/to/texture1.jpg') });
+const material2 = new THREE.MeshPhongMaterial({ map: new THREE.TextureLoader().load('path/to/texture2.jpg') });
 const box = new THREE.Mesh(geometry, material);
 box.position.set(-4, -1, 2);
 group.add(box);
@@ -162,3 +164,15 @@ const animate = () => {
 };
 
 animate();
+
+
+
+/* mouse cursor js open */
+$(window).mousemove(function (e) {
+    $(".ring").css(
+        "transform",
+        `translateX(calc(${e.clientX}px - 1.25rem)) translateY(calc(${e.clientY}px - 1.25rem))`
+    );
+});
+/* mouse cursor js closed */
+
